@@ -74,12 +74,12 @@ create table public.pets(
 ```
 
 -- Habilitar RLS (Row Level Security)
-
+```
 alter table clients enable row level security;
 alter table pets enable row level security;
-
+```
 -- Política RLS para usuarios autenticados para permitir realizar las operaciones
-
+```
 create policy "Allow all for authenticated"
 on clients
 for all
