@@ -45,7 +45,7 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ### SQL para crear las tablas
 
-Ejecutar lo siguiente para crear tablas de clinetes y mascotas
+Ejecutar lo siguiente para crear tablas de clientes y mascotas
 
 -- Tabla de clientes
 
