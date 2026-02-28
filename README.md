@@ -48,7 +48,7 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 Ejecutar lo siguiente para crear tablas de clientes y mascotas
 
 -- Tabla de clientes
-`
+```
 create table public.clients(
   id uuid primary key default gen_random_uuid(),
   full_name text not null,
@@ -57,11 +57,11 @@ create table public.clients(
   notes text,
   created_at timestamp with time zone default now()
 );
-`
+```
 
 -- Tabla de mascotas
 
-`
+```
 create table public.pets(
   id uuid primary key default gen_random_uuid(),
   client_id uuid references public.clients(id) on delete cascade,
@@ -71,7 +71,7 @@ create table public.pets(
   behavior_notes text,
   created_at timestamp with time zone default now()
 );
-`
+```
 
 -- Habilitar RLS (Row Level Security)
 
