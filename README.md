@@ -9,7 +9,7 @@ Veterinaria Ruffo - Aplicación web para gestión de clientes y sus mascotas.
 
 ```
 bash
-git clone <repo-url>
+git clone "https://github.com/Ingrith-R2/Ruffo_pets"
 cd ruffo-app
 ```
 
