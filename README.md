@@ -22,11 +22,8 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Copia el archivo `.env.example` a `.env` y completa los valores:
+Crear el archivo `.env` y completa los valores como muestra en `.env.example`
 
-```bash
-cp .env.example .env.local
-```
 
 Edita `.env` con tus credenciales de Supabase:
 
