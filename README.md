@@ -52,7 +52,7 @@ Ejecutar lo siguiente para crear tablas de clientes y mascotas
 create table public.clients(
   id uuid primary key default gen_random_uuid(),
   full_name text not null,
-  phone numeric not null,
+  phone text not null,
   email text ,
   notes text,
   created_at timestamp with time zone default now()
