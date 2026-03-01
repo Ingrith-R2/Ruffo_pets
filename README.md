@@ -9,7 +9,7 @@ Veterinaria Ruffo - Aplicación web para gestión de clientes y sus mascotas.
 
 ```
 bash
-git clone <repo-url>
+git clone "https://github.com/Ingrith-R2/Ruffo_pets"
 cd ruffo-app
 ```
 
@@ -22,11 +22,8 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Copia el archivo `.env.example` a `.env` y completa los valores:
+Crear el archivo `.env` y completa los valores como muestra en `.env.example`
 
-```bash
-cp .env.example .env.local
-```
 
 Edita `.env` con tus credenciales de Supabase:
 
@@ -48,10 +45,10 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ### SQL para crear las tablas
 
-Ejecutar lo siguiente para crear tablas de clinetes y mascotas
+Ejecutar lo siguiente para crear tablas de clientes y mascotas
 
 -- Tabla de clientes
-
+```
 create table public.clients(
   id uuid primary key default gen_random_uuid(),
   full_name text not null,
@@ -60,10 +57,11 @@ create table public.clients(
   notes text,
   created_at timestamp with time zone default now()
 );
+```
 
 -- Tabla de mascotas
 
-
+```
 create table public.pets(
   id uuid primary key default gen_random_uuid(),
   client_id uuid references public.clients(id) on delete cascade,
@@ -73,15 +71,15 @@ create table public.pets(
   behavior_notes text,
   created_at timestamp with time zone default now()
 );
-
+```
 
 -- Habilitar RLS (Row Level Security)
-
+```
 alter table clients enable row level security;
 alter table pets enable row level security;
-
+```
 -- Política RLS para usuarios autenticados para permitir realizar las operaciones
-
+```
 create policy "Allow all for authenticated"
 on clients
 for all
