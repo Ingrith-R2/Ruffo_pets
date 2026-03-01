@@ -1,23 +1,34 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 export function SearchClients() {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
 
-  // Actualizar URL con el término de búsqueda
-  useEffect(() => {
+  // Función para actualizar la URL con debounce
+  const updateSearch = useCallback((term: string) => {
     const params = new URLSearchParams(window.location.search);
-    if (searchTerm) {
-      params.set("search", searchTerm);
+    if (term) {
+      params.set("search", term);
     } else {
       params.delete("search");
     }
-    router.push(`/clientes?${params.toString()}`);
-  }, [searchTerm, router]);
+    const newUrl = `/clientes?${params.toString()}`;
+    router.push(newUrl);
+  }, [router]);
+
+  // Debounce para evitar actualizaciones excesivas
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      updateSearch(searchTerm);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, updateSearch]);
 
   return (
     <Input
