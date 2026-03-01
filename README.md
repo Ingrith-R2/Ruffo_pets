@@ -95,7 +95,9 @@ using (true)
 with check (true);
 ```
 
-### 👤 Credenciales de Usuario de Prueba. Nota: se debe crear el usuario en Supabase 
+### 👤 Credenciales de Usuario de Prueba.
+
+ Nota: se debe crear el usuario en Supabase 
 
 **Email**: `ruffo@pets.com`
 **Password**: `RuffO369`
